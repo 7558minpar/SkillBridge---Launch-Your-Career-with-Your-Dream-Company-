@@ -1,0 +1,1762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillBridge - Bridge Your Skills to Dream Companies</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #f72585;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4cc9f0;
+            --warning: #f8961e;
+            --danger: #ef233c;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: var(--light);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header Styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 65px;
+            height: 65px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
+            overflow: hidden;
+        }
+
+        .logo::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.2) 50%, transparent 60%);
+            top: 0;
+            left: -100%;
+            animation: shine 3s infinite linear;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            20% { left: 100%; }
+            100% { left: 100%; }
+        }
+
+        .logo i {
+            font-size: 34px;
+            color: white;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .brand-text h1 {
+            font-size: 36px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .brand-text p {
+            font-size: 14px;
+            color: #94a3b8;
+            font-style: italic;
+        }
+
+        /* Login Page */
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 70vh;
+        }
+
+        .login-box {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 450px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .login-box h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--light);
+            font-size: 28px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #cbd5e1;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: var(--light);
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(67, 97, 238, 0.3);
+        }
+
+        .btn-accent {
+            background: linear-gradient(to right, var(--accent), #b5179e);
+        }
+
+        /* Main Content Area */
+        .content {
+            display: flex;
+            flex: 1;
+            gap: 30px;
+            position: relative;
+        }
+
+        /* Dashboard Styles */
+        .dashboard {
+            width: 300px;
+            background: rgba(30, 41, 59, 0.8);
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+
+        .dashboard h3 {
+            color: var(--success);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 22px;
+        }
+
+        .dashboard-section {
+            margin-bottom: 25px;
+        }
+
+        .dashboard-section h4 {
+            color: #94a3b8;
+            font-size: 16px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .roadmap-list {
+            list-style: none;
+        }
+
+        .roadmap-list li {
+            padding: 8px 12px;
+            background: rgba(15, 23, 42, 0.7);
+            margin-bottom: 8px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .roadmap-list li:hover {
+            background: rgba(67, 97, 238, 0.2);
+        }
+
+        .score-badge {
+            background: var(--primary);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .leaderboard {
+            list-style: none;
+        }
+
+        .leaderboard li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .leaderboard li:last-child {
+            border-bottom: none;
+        }
+
+        .rank {
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            background: rgba(67, 97, 238, 0.2);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 25px;
+            font-size: 12px;
+            margin-right: 10px;
+        }
+
+        .certificate {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(76, 201, 240, 0.1), rgba(67, 97, 238, 0.1));
+            border-radius: 12px;
+            border: 1px solid rgba(76, 201, 240, 0.3);
+        }
+
+        .certificate i {
+            font-size: 40px;
+            color: var(--success);
+            margin-bottom: 10px;
+        }
+
+        .logout-btn {
+            background: rgba(239, 35, 60, 0.1);
+            color: var(--danger);
+            border: 1px solid rgba(239, 35, 60, 0.3);
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+
+        .logout-btn:hover {
+            background: rgba(239, 35, 60, 0.2);
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            flex: 1;
+            background: rgba(30, 41, 59, 0.8);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .page-header {
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .page-header h2 {
+            font-size: 28px;
+            color: var(--light);
+        }
+
+        .page-header p {
+            color: #94a3b8;
+            margin-top: 5px;
+        }
+
+        /* Profile Page (Skills and Interests) */
+        .profile-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .skills-input-container {
+            background: rgba(15, 23, 42, 0.7);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .skills-input-container h3 {
+            color: var(--light);
+            margin-bottom: 15px;
+        }
+
+        .skills-input-container p {
+            color: #94a3b8;
+            margin-bottom: 20px;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .skill-tag {
+            background: rgba(67, 97, 238, 0.2);
+            color: #a5b4fc;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .skill-tag .remove-skill {
+            cursor: pointer;
+            font-size: 12px;
+            opacity: 0.7;
+        }
+
+        .skill-tag .remove-skill:hover {
+            opacity: 1;
+        }
+
+        .suggested-skills {
+            margin-top: 25px;
+        }
+
+        .suggested-skills h4 {
+            color: #cbd5e1;
+            margin-bottom: 12px;
+        }
+
+        .suggested-skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .suggested-skill {
+            background: rgba(76, 201, 240, 0.1);
+            color: #4cc9f0;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .suggested-skill:hover {
+            background: rgba(76, 201, 240, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .interests-container {
+            background: rgba(15, 23, 42, 0.7);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .interests-container h3 {
+            color: var(--light);
+            margin-bottom: 15px;
+        }
+
+        .company-interests {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .company-interest {
+            background: rgba(30, 41, 59, 0.8);
+            border-radius: 10px;
+            padding: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .company-interest:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .company-interest.selected {
+            border-color: var(--accent);
+            background: rgba(248, 37, 133, 0.05);
+        }
+
+        .company-interest i {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        /* Company Selection Page */
+        .company-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .company-card {
+            background: rgba(15, 23, 42, 0.7);
+            border-radius: 15px;
+            padding: 25px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .company-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .company-card.selected {
+            border-color: var(--accent);
+            background: rgba(248, 37, 133, 0.05);
+        }
+
+        .company-card h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: var(--light);
+        }
+
+        .company-card p {
+            color: #94a3b8;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .requirements {
+            margin-top: 15px;
+        }
+
+        .requirements h4 {
+            color: #cbd5e1;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: rgba(67, 97, 238, 0.2);
+            color: #a5b4fc;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .skills-input {
+            margin-top: 30px;
+        }
+
+        .skills-input textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        /* Test Page */
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .question {
+            background: rgba(15, 23, 42, 0.7);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .question-number {
+            background: var(--primary);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .question-text {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option {
+            padding: 15px;
+            background: rgba(30, 41, 59, 0.8);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .option:hover {
+            background: rgba(67, 97, 238, 0.1);
+        }
+
+        .option.selected {
+            background: rgba(67, 97, 238, 0.2);
+            border-color: var(--primary);
+        }
+
+        .test-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        /* Results Page */
+        .result-container {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .result-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+
+        .passed {
+            color: var(--success);
+        }
+
+        .failed {
+            color: var(--danger);
+        }
+
+        .score-display {
+            font-size: 72px;
+            font-weight: 800;
+            margin: 20px 0;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .improvement-areas {
+            text-align: left;
+            background: rgba(239, 35, 60, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 1px solid rgba(239, 35, 60, 0.3);
+        }
+
+        .improvement-areas h3 {
+            color: var(--danger);
+            margin-bottom: 15px;
+        }
+
+        .improvement-areas ul {
+            padding-left: 20px;
+        }
+
+        .improvement-areas li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        /* Roadmap Page */
+        .roadmap-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .roadmap-steps {
+            position: relative;
+            padding-left: 30px;
+            margin-top: 40px;
+        }
+
+        .roadmap-steps::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+
+        .roadmap-step {
+            position: relative;
+            margin-bottom: 40px;
+            background: rgba(15, 23, 42, 0.7);
+            border-radius: 15px;
+            padding: 25px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .roadmap-step::before {
+            content: '';
+            position: absolute;
+            left: -37px;
+            top: 30px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 4px solid #0f172a;
+        }
+
+        .step-number {
+            position: absolute;
+            left: -45px;
+            top: 24px;
+            background: var(--primary);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .step-title {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: var(--light);
+        }
+
+        .step-duration {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: inline-block;
+            background: rgba(248, 37, 133, 0.1);
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+
+        .step-description {
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+
+        /* Matching Results */
+        .matching-results {
+            background: rgba(15, 23, 42, 0.7);
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 30px;
+            border-left: 4px solid var(--success);
+        }
+
+        .matching-results h3 {
+            color: var(--success);
+            margin-bottom: 15px;
+        }
+
+        .match-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: rgba(30, 41, 59, 0.8);
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .match-percentage {
+            background: var(--success);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        /* Interview Page */
+        .interview-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .interview-question {
+            background: rgba(15, 23, 42, 0.7);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--warning);
+        }
+
+        /* Job Selection Success Box */
+        .success-box {
+            background: linear-gradient(135deg, rgba(76, 201, 240, 0.1), rgba(67, 97, 238, 0.1));
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            border: 2px solid rgba(76, 201, 240, 0.3);
+            margin: 30px auto;
+            max-width: 600px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(76, 201, 240, 0.4); }
+            70% { box-shadow: 0 0 0 20px rgba(76, 201, 240, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(76, 201, 240, 0); }
+        }
+
+        .success-icon {
+            font-size: 80px;
+            color: var(--success);
+            margin-bottom: 20px;
+        }
+
+        .success-box h2 {
+            color: var(--light);
+            margin-bottom: 15px;
+            font-size: 32px;
+        }
+
+        .success-box p {
+            color: #94a3b8;
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        /* Gamification Elements */
+        .gamification {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 100;
+        }
+
+        .points-display {
+            background: rgba(30, 41, 59, 0.9);
+            border-radius: 15px;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .points-display i {
+            color: var(--warning);
+            font-size: 24px;
+        }
+
+        .badge {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, var(--warning), #ff9e00);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 5px 15px rgba(248, 150, 30, 0.4);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .badge:hover {
+            transform: scale(1.1) rotate(10deg);
+        }
+
+        .achievement-toast {
+            position: fixed;
+            bottom: 120px;
+            right: 30px;
+            background: rgba(30, 41, 59, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            border-left: 5px solid var(--warning);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            max-width: 350px;
+            transform: translateX(400px);
+            transition: transform 0.5s ease;
+            z-index: 1000;
+        }
+
+        .achievement-toast.show {
+            transform: translateX(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1100px) {
+            .content {
+                flex-direction: column;
+            }
+            
+            .dashboard {
+                width: 100%;
+                position: static;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .login-box {
+                padding: 30px 20px;
+            }
+            
+            .brand-text h1 {
+                font-size: 28px;
+            }
+            
+            .company-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .gamification {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .achievement-toast {
+                right: 20px;
+                left: 20px;
+                max-width: calc(100% - 40px);
+            }
+            
+            .company-interests {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo-container">
+                <div class="logo">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <div class="brand-text">
+                    <h1>SkillBridge</h1>
+                    <p>Launch Your Career to Dream Companies</p>
+                </div>
+            </div>
+            <div class="user-info" id="userInfo" style="display: none;">
+                <span id="usernameDisplay"></span>
+            </div>
+        </header>
+
+        <!-- Login Page -->
+        <div class="login-container" id="loginPage">
+            <div class="login-box">
+                <h2>Welcome to SkillBridge</h2>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" class="form-control" placeholder="Enter your username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" class="form-control" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="btn">Login / Register</button>
+                    <p style="text-align: center; margin-top: 20px; color: #94a3b8; font-size: 14px;">
+                        New user? Just enter your credentials to register automatically.
+                    </p>
+                </form>
+            </div>
+        </div>
+
+        <!-- Main Content (Hidden until login) -->
+        <div class="content" id="mainContent" style="display: none;">
+            <!-- Dashboard -->
+            <div class="dashboard">
+                <h3><i class="fas fa-tachometer-alt"></i> Dashboard</h3>
+                
+                <div class="dashboard-section">
+                    <h4><i class="fas fa-road"></i> Your Roadmaps</h4>
+                    <ul class="roadmap-list" id="roadmapList">
+                        <!-- Roadmaps will be added here -->
+                    </ul>
+                </div>
+                
+                <div class="dashboard-section">
+                    <h4><i class="fas fa-chart-line"></i> Test Scores</h4>
+                    <div id="testScores">
+                        <!-- Test scores will be added here -->
+                    </div>
+                </div>
+                
+                <div class="dashboard-section">
+                    <h4><i class="fas fa-trophy"></i> Leaderboard</h4>
+                    <ul class="leaderboard" id="leaderboard">
+                        <!-- Leaderboard will be added here -->
+                    </ul>
+                </div>
+                
+                <div class="dashboard-section">
+                    <h4><i class="fas fa-award"></i> Certificates</h4>
+                    <div id="certificates">
+                        <!-- Certificates will be added here -->
+                    </div>
+                </div>
+                
+                <button class="logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Log Out</button>
+                <button class="btn" id="clearDataBtn" style="margin-top: 10px; background: rgba(248, 37, 133, 0.1); color: var(--accent); border: 1px solid rgba(248, 37, 133, 0.3);">
+                    <i class="fas fa-trash"></i> Clear All Data
+                </button>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="main-content">
+                <!-- Profile Page (Skills and Interests) -->
+                <div class="page active" id="profilePage">
+                    <div class="page-header">
+                        <h2>Your Skills & Target Companies</h2>
+                        <p>Tell us about your skills and select companies you want to target</p>
+                    </div>
+                    
+                    <div class="profile-container">
+                        <div class="skills-input-container">
+                            <h3><i class="fas fa-code"></i> Your Skills</h3>
+                            <p>Add your current skills (e.g., Python, JavaScript, React, SQL, Machine Learning). You can type and press Enter or click suggestions below.</p>
+                            
+                            <div class="form-group">
+                                <input type="text" id="addSkillInput" class="form-control" placeholder="Type a skill and press Enter">
+                            </div>
+                            
+                            <div class="skills-list" id="skillsList">
+                                <!-- Skills will be added here dynamically -->
+                            </div>
+                            
+                            <div class="suggested-skills">
+                                <h4>Popular Skills:</h4>
+                                <div class="suggested-skills-list" id="suggestedSkills">
+                                    <!-- Suggested skills will be added here -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="interests-container">
+                            <h3><i class="fas fa-building"></i> Target Companies</h3>
+                            <p>Select the companies you're interested in working for:</p>
+                            
+                            <div class="company-interests" id="companyInterests">
+                                <div class="company-interest" data-company="abc">
+                                    <i class="fas fa-laptop-code"></i>
+                                    <h4>ABC Company</h4>
+                                </div>
+                                <div class="company-interest" data-company="xyz">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    <h4>XYZ Company</h4>
+                                </div>
+                                <div class="company-interest" data-company="mp">
+                                    <i class="fas fa-chart-line"></i>
+                                    <h4>MP Company</h4>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="btn" id="matchCompaniesBtn">Check My Compatibility</button>
+                    </div>
+                </div>
+
+                <!-- Company Matching Results Page -->
+                <div class="page" id="matchingResultsPage">
+                    <div class="page-header">
+                        <h2>Company Compatibility Results</h2>
+                        <p>Based on your skills, here are your compatibility scores</p>
+                    </div>
+                    
+                    <div class="profile-container">
+                        <div id="matchingResultsContent">
+                            <!-- Matching results will be added here -->
+                        </div>
+                        
+                        <div class="test-actions">
+                            <button class="btn" id="backToProfileBtn">
+                                <i class="fas fa-arrow-left"></i> Back to Profile
+                            </button>
+                            <button class="btn btn-accent" id="proceedToAssessmentBtn">
+                                Proceed to Assessment <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Company Selection Page -->
+                <div class="page" id="companySelectionPage">
+                    <div class="page-header">
+                        <h2>Select Your Target Company</h2>
+                        <p>Choose a company you want to prepare for. We'll assess your skills and create a personalized roadmap.</p>
+                    </div>
+                    
+                    <div class="company-options" id="eligibleCompaniesList">
+                        <!-- Eligible companies will be added here -->
+                    </div>
+                    
+                    <div class="test-actions">
+                        <button class="btn" id="backToMatchingBtn">
+                            <i class="fas fa-arrow-left"></i> Back to Results
+                        </button>
+                        <button class="btn btn-accent" id="startAssessmentBtn">
+                            Start Assessment <i class="fas fa-play"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Test Page -->
+                <div class="page" id="testPage">
+                    <div class="page-header">
+                        <h2>Skill Assessment Test</h2>
+                        <p>Answer these 3 questions to evaluate your readiness for <span id="testCompanyName"></span></p>
+                    </div>
+                    
+                    <div class="test-container">
+                        <div id="testQuestions">
+                            <!-- Test questions will be added here -->
+                        </div>
+                        
+                        <div class="test-actions">
+                            <button class="btn" id="submitTestBtn">Submit Test</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interview Page -->
+                <div class="page" id="interviewPage">
+                    <div class="page-header">
+                        <h2>Mock Interview</h2>
+                        <p>Answer these interview questions for <span id="interviewCompanyName"></span></p>
+                    </div>
+                    
+                    <div class="interview-container">
+                        <div id="interviewQuestions">
+                            <!-- Interview questions will be added here -->
+                        </div>
+                        
+                        <div class="test-actions">
+                            <button class="btn" id="submitInterviewBtn">Submit Interview</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job Selection Success Page -->
+                <div class="page" id="jobSelectionPage">
+                    <div class="page-header">
+                        <h2>Congratulations! 🎉</h2>
+                        <p>You have successfully completed the process for <span id="jobCompanyName"></span></p>
+                    </div>
+                    
+                    <div class="result-container">
+                        <div class="success-box">
+                            <div class="success-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <h2>Job Selected!</h2>
+                            <p>Congratulations! Based on your performance in the assessment and interview,</p>
+                            <p style="font-size: 24px; color: var(--success); font-weight: 700; margin: 20px 0;">You have been SELECTED for the position at <span id="selectedCompanyName"></span>!</p>
+                            <p>Our team will contact you shortly with the offer letter and next steps.</p>
+                            <div style="margin-top: 30px;">
+                                <button class="btn" id="viewRoadmapBtn" style="margin: 10px;">
+                                    <i class="fas fa-road"></i> View Onboarding Roadmap
+                                </button>
+                                <button class="btn btn-accent" id="backToDashboardBtn" style="margin: 10px;">
+                                    <i class="fas fa-home"></i> Back to Dashboard
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results Page -->
+                <div class="page" id="resultsPage">
+                    <div class="page-header">
+                        <h2>Assessment Results</h2>
+                        <p>Your performance for <span id="resultsCompanyName"></span></p>
+                    </div>
+                    
+                    <div class="result-container">
+                        <div id="resultContent">
+                            <!-- Results will be added here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Roadmap Page -->
+                <div class="page" id="roadmapPage">
+                    <div class="page-header">
+                        <h2>Personalized Roadmap</h2>
+                        <p>Your step-by-step guide to land a job at <span id="roadmapCompanyName"></span></p>
+                    </div>
+                    
+                    <div class="roadmap-container">
+                        <div id="roadmapContent">
+                            <!-- Roadmap will be added here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gamification Elements -->
+        <div class="gamification">
+            <div class="points-display" id="pointsDisplay">
+                <i class="fas fa-star"></i>
+                <span id="pointsValue">0</span> Points
+            </div>
+            <div class="badge" id="badge" title="Click to view achievements">
+                <i class="fas fa-trophy"></i>
+            </div>
+        </div>
+        
+        <div class="achievement-toast" id="achievementToast">
+            <i class="fas fa-medal" style="color: var(--warning); font-size: 30px;"></i>
+            <div>
+                <h4 style="color: white; margin-bottom: 5px;">Achievement Unlocked!</h4>
+                <p id="achievementText" style="color: #94a3b8; font-size: 14px;"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Application State
+        const state = {
+            currentUser: null,
+            userSkills: [],
+            companyInterests: [],
+            currentCompany: null,
+            eligibleCompanies: [],
+            testAnswers: {},
+            interviewAnswers: {},
+            testScore: 0,
+            interviewScore: 0,
+            points: 0,
+            achievements: []
+        };
+
+        // Company Data (hidden from candidates)
+        const companies = {
+            abc: {
+                name: "ABC Company",
+                description: "A leading tech giant specializing in AI and cloud solutions. Known for innovative products and competitive work environment.",
+                requiredSkills: ["python", "machine learning", "data structures", "cloud computing", "problem solving"],
+                testQuestions: [
+                    {
+                        question: "Which algorithm is most efficient for sorting a large dataset with random distribution?",
+                        options: ["Bubble Sort", "Quick Sort", "Selection Sort", "Insertion Sort"],
+                        correctAnswer: 1
+                    },
+                    {
+                        question: "In machine learning, what does the term 'overfitting' refer to?",
+                        options: [
+                            "A model that performs well on training data but poorly on unseen data",
+                            "A model that performs poorly on both training and test data",
+                            "A model that takes too long to train",
+                            "A model with too few parameters"
+                        ],
+                        correctAnswer: 0
+                    },
+                    {
+                        question: "What is the time complexity of accessing an element in a hash table?",
+                        options: ["O(1)", "O(n)", "O(log n)", "O(n²)"],
+                        correctAnswer: 0
+                    }
+                ],
+                interviewQuestions: [
+                    {
+                        question: "Tell me about a time when you had to solve a complex technical problem. What was your approach?",
+                        options: [
+                            "I broke it down into smaller parts and tackled each systematically",
+                            "I researched online and implemented the first solution I found",
+                            "I asked my manager to solve it for me",
+                            "I avoided the problem and worked on something else"
+                        ],
+                        correctAnswer: 0
+                    },
+                    {
+                        question: "How do you stay updated with the latest technologies in AI and machine learning?",
+                        options: [
+                            "Regularly read research papers, attend conferences, and work on personal projects",
+                            "I rely on what I learned in college",
+                            "I don't stay updated",
+                            "I only learn when my job requires it"
+                        ],
+                        correctAnswer: 0
+                    },
+                    {
+                        question: "Describe your experience with cloud computing platforms.",
+                        options: [
+                            "Hands-on experience with AWS/Azure/GCP, deployed multiple projects",
+                            "I've heard about them but haven't used them",
+                            "I only know the theory",
+                            "I've taken an online course but no practical experience"
+                        ],
+                        correctAnswer: 0
+                    }
+                ],
+                roadmap: [
+                    {
+                        title: "Foundation Phase (Month 1-2)",
+                        duration: "2 Months",
+                        description: "Master Python programming and basic data structures. Complete at least 50 coding problems on platforms like LeetCode."
+                    },
+                    {
+                        title: "Machine Learning Basics (Month 3-4)",
+                        duration: "2 Months",
+                        description: "Learn ML fundamentals - regression, classification, clustering. Implement projects using scikit-learn."
+                    },
+                    {
+                        title: "Advanced ML & Cloud (Month 5-6)",
+                        duration: "2 Months",
+                        description: "Study deep learning with TensorFlow/PyTorch. Get certified in AWS or Azure cloud fundamentals."
+                    },
+                    {
+                        title: "Project Portfolio (Month 7-8)",
+                        duration: "2 Months",
+                        description: "Build 2-3 substantial projects that solve real-world problems using ML and cloud technologies."
+                    },
+                    {
+                        title: "Interview Preparation (Month 9-10)",
+                        duration: "2 Months",
+                        description: "Practice system design questions, mock interviews, and review company-specific interview patterns."
+                    }
+                ]
+            },
+            xyz: {
+                name: "XYZ Company",
+                description: "A global e-commerce and fintech leader. Focuses on scalable systems, data analytics, and user experience.",
+                requiredSkills: ["javascript", "react", "node.js", "database design", "system design"],
+                testQuestions: [
+                    {
+                        question: "In React, what is the purpose of the useEffect hook?",
+                        options: [
+                            "To handle side effects in functional components",
+                            "To create state variables",
+                            "To optimize performance",
+                            "To handle routing"
+                        ],
+                        correctAnswer: 0
+                    },
+                    {
+                        question: "What is the purpose of indexing in databases?",
+                        options: [
+                            "To speed up data retrieval",
+                            "To reduce storage space",
+                            "To encrypt data",
+                            "To backup data"
+                        ],
+                        correctAnswer: 0
+                    },
+                    {
+                        question: "Which design pattern is commonly used in Node.js for handling asynchronous operations?",
+                        options: ["Observer Pattern", "Singleton Pattern", "Callback Pattern", "Factory Pattern"],
+                        correctAnswer: 2
+                    }
+                ],
+                interviewQuestions: [
+                    {
+                        question: "How would you optimize a slow-performing web application?",
+                        options: [
+                            "Profile the app, identify bottlenecks, optimize database queries, implement caching",
+                            "Add more servers without investigation",
+                            "Ask users to be patient",
+                            "Redesign the entire application from scratch"
+                        ],
+                        correctAnswer: 0
+                    },
+                    {
+                        question: "Describe your experience with microservices architecture.",
+                        options: [
+                            "Designed and implemented microservices with proper communication patterns and fault tolerance",
+                            "I've only worked with monolithic applications",
+                            "I know the theory but haven't implemented it",
+                            "I think microservices are overcomplicated"
+                        ],
+                        correctAnswer: 0
+                    },
+                    {
+                        question: "How do you ensure code quality in a large team?",
+                        options: [
+                            "Code reviews, testing, coding standards, and CI/CD pipelines",
+                            "I trust everyone writes good code",
+                            "I don't worry about code quality",
+                            "I fix issues when they come up"
+                        ],
+                        correctAnswer: 0
+                    }
+                ],
+                roadmap: [
+                    {
+                        title: "JavaScript Mastery (Month 1-2)",
+                        duration: "2 Months",
+                        description: "Deep dive into modern JavaScript (ES6+), asynchronous programming, and DOM manipulation."
+                    },
+                    {
+                        title: "Frontend Framework (Month 3-4)",
+                        duration: "2 Months",
+                        description: "Master React.js including hooks, state management (Redux), and modern frontend practices."
+                    },
+                    {
+                        title: "Backend Development (Month 5-6)",
+                        duration: "2 Months",
+                        description: "Learn Node.js, Express.js, and database design with SQL and NoSQL databases."
+                    },
+                    {
+                        title: "System Design (Month 7-8)",
+                        duration: "2 Months",
+                        description: "Study scalable system architecture, microservices, caching strategies, and API design."
+                    },
+                    {
+                        title: "Full-Stack Projects (Month 9-10)",
+                        duration: "2 Months",
+                        description: "Build 2-3 full-stack applications with React frontend and Node.js backend deployed to cloud."
+                    }
+                ]
+            },
+            mp: {
+                name: "MP Company",
+                description: "A leading financial services company specializing in investment banking and financial technology.",
+                requiredSkills: ["java", "spring boot", "sql", "financial modeling", "data analysis"],
+                testQuestions: [
+                    {
+                        question: "In Java, what is the difference between ArrayList and LinkedList?",
+                        options: [
+                            "ArrayList has O(1) access time, LinkedList has O(1) insert/delete at ends",
+                            "They are exactly the same",
+                            "LinkedList is always faster",
+                            "ArrayList uses more memory"
+                        ],
+                        correctAnswer: 0
+                    },
+                    {
+                        question: "What is the purpose of the Spring Framework's Dependency Injection?",
+                        options: [
+                            "To promote loose coupling and easier testing",
+                            "To make code run faster",
+                            "To reduce code size",
+                            "To improve security"
+                        ],
+                        correctAnswer: 0
+                    },
+                    {
+                        question: "Which SQL command is used to modify existing data in a table?",
+                        options: ["UPDATE", "MODIFY", "CHANGE", "ALTER"],
+                        correctAnswer: 0
+                    }
+                ],
+                interviewQuestions: [
+                    {
+                        question: "How would you design a system for real-time stock trading?",
+                        options: [
+                            "Low-latency architecture, message queues, in-memory databases, and fault tolerance",
+                            "A simple web application with a database",
+                            "I would use Excel spreadsheets",
+                            "I'm not sure"
+                        ],
+                        correctAnswer: 0
+                    },
+                    {
+                        question: "Explain the concept of risk management in financial applications.",
+                        options: [
+                            "Identifying, assessing, and prioritizing risks with mitigation strategies",
+                            "Avoiding all risks completely",
+                            "Ignoring risks until they happen",
+                            "Only focusing on financial risks"
+                        ],
+                        correctAnswer: 0
+                    },
+                    {
+                        question: "How do you ensure data accuracy in financial reporting systems?",
+                        options: [
+                            "Data validation, reconciliation processes, audit trails, and automated checks",
+                            "Manual checking by employees",
+                            "Trusting the source systems",
+                            "Only checking at month-end"
+                        ],
+                        correctAnswer: 0
+                    }
+                ],
+                roadmap: [
+                    {
+                        title: "Java & Spring Boot (Month 1-2)",
+                        duration: "2 Months",
+                        description: "Master Java 11+ features and Spring Boot for enterprise application development."
+                    },
+                    {
+                        title: "Database & Financial Systems (Month 3-4)",
+                        duration: "2 Months",
+                        description: "Learn advanced SQL, database design, and basic financial modeling concepts."
+                    },
+                    {
+                        title: "System Architecture (Month 5-6)",
+                        duration: "2 Months",
+                        description: "Study financial system architecture, message brokers, and transaction processing."
+                    },
+                    {
+                        title: "Security & Compliance (Month 7-8)",
+                        duration: "2 Months",
+                        description: "Learn about financial security standards, compliance requirements, and audit processes."
+                    },
+                    {
+                        title: "Real Projects (Month 9-10)",
+                        duration: "2 Months",
+                        description: "Build financial applications with proper security, reporting, and compliance features."
+                    }
+                ]
+            }
+        };
+
+        // Suggested skills
+        const suggestedSkills = [
+            "Python", "JavaScript", "React", "Node.js", "SQL", "Machine Learning", 
+            "Data Structures", "Cloud Computing", "System Design", "HTML/CSS",
+            "Git", "Docker", "Kubernetes", "AWS", "Azure", "REST API", "GraphQL",
+            "Java", "Spring Boot", "Financial Modeling", "Data Analysis"
+        ];
+
+        // DOM Elements
+        const loginPage = document.getElementById('loginPage');
+        const mainContent = document.getElementById('mainContent');
+        const loginForm = document.getElementById('loginForm');
+        const usernameDisplay = document.getElementById('usernameDisplay');
+        const userInfo = document.getElementById('userInfo');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const clearDataBtn = document.getElementById('clearDataBtn');
+        
+        // Pages
+        const profilePage = document.getElementById('profilePage');
+        const matchingResultsPage = document.getElementById('matchingResultsPage');
+        const companySelectionPage = document.getElementById('companySelectionPage');
+        const testPage = document.getElementById('testPage');
+        const interviewPage = document.getElementById('interviewPage');
+        const jobSelectionPage = document.getElementById('jobSelectionPage');
+        const resultsPage = document.getElementById('resultsPage');
+        const roadmapPage = document.getElementById('roadmapPage');
+        
+        // Profile Page Elements
+        const addSkillInput = document.getElementById('addSkillInput');
+        const skillsList = document.getElementById('skillsList');
+        const suggestedSkillsContainer = document.getElementById('suggestedSkills');
+        const companyInterestsContainer = document.getElementById('companyInterests');
+        const matchCompaniesBtn = document.getElementById('matchCompaniesBtn');
+        
+        // Matching Results Elements
+        const matchingResultsContent = document.getElementById('matchingResultsContent');
+        const backToProfileBtn = document.getElementById('backToProfileBtn');
+        const proceedToAssessmentBtn = document.getElementById('proceedToAssessmentBtn');
+        
+        // Company Selection Elements
+        const eligibleCompaniesList = document.getElementById('eligibleCompaniesList');
+        const backToMatchingBtn = document.getElementById('backToMatchingBtn');
+        const startAssessmentBtn = document.getElementById('startAssessmentBtn');
+        
+        // Test Elements
+        const testQuestionsContainer = document.getElementById('testQuestions');
+        const submitTestBtn = document.getElementById('submitTestBtn');
+        const testCompanyName = document.getElementById('testCompanyName');
+        
+        // Interview Elements
+        const interviewQuestionsContainer = document.getElementById('interviewQuestions');
+        const submitInterviewBtn = document.getElementById('submitInterviewBtn');
+        const interviewCompanyName = document.getElementById('interviewCompanyName');
+        
+        // Job Selection Elements
+        const jobCompanyName = document.getElementById('jobCompanyName');
+        const selectedCompanyName = document.getElementById('selectedCompanyName');
+        const viewRoadmapBtn = document.getElementById('viewRoadmapBtn');
+        const backToDashboardBtn = document.getElementById('backToDashboardBtn');
+        
+        // Results Elements
+        const resultContent = document.getElementById('resultContent');
+        const resultsCompanyName = document.getElementById('resultsCompanyName');
+        
+        // Roadmap Elements
+        const roadmapContent = document.getElementById('roadmapContent');
+        const roadmapCompanyName = document.getElementById('roadmapCompanyName');
+        
+        // Dashboard Elements
+        const roadmapList = document.getElementById('roadmapList');
+        const testScoresContainer = document.getElementById('testScores');
+        const leaderboard = document.getElementById('leaderboard');
+        const certificatesContainer = document.getElementById('certificates');
+        
+        // Gamification Elements
+        const pointsDisplay = document.getElementById('pointsDisplay');
+        const pointsValue = document.getElementById('pointsValue');
+        const badge = document.getElementById('badge');
+        const achievementToast = document.getElementById('achievementToast');
+        const achievementText = document.getElementById('achievementText');
+
+        // Functions to be used
+        function addPoints(points, reason) {
+            state.points += points;
+            updatePointsDisplay();
+            
+            // Save to localStorage
+            const userData = JSON.parse(localStorage.getItem('skillbridge_user'));
+            if (userData) {
+                userData.points = state.points;
+                localStorage.setItem('skillbridge_user', JSON.stringify(userData));
+            }
+            
+            // Show notification for significant point gains
+            if (points >= 20) {
+                showAchievementNotification('Earned ' + points + ' points for: ' + reason);
+            }
+        }
+
+        function addAchievement(achievement) {
+            if (!state.achievements.includes(achievement)) {
+                state.achievements.push(achievement);
+                
+                // Save to localStorage
+                const userData = JSON.parse(localStorage.getItem('skillbridge_user'));
+                if (userData) {
+                    userData.achievements = state.achievements;
+                    localStorage.setItem('skillbridge_user', JSON.stringify(userData));
+                }
+                
+                // Show notification
+                showAchievementNotification('Achievement: ' + achievement);
+            }
+        }
+
+        function showAchievementNotification(text) {
+            achievementText.textContent = text;
+            achievementToast.classList.add('show');
+            
+            setTimeout(function() {
+                achievementToast.classList.remove('show');
+            }, 5000);
+        }
+
+        function showAchievements() {
+            let message = "Your Achievements:\n\n";
+            if (state.achievements.length > 0) {
+                state.achievements.forEach(function(ach, index) {
+                    message += (index + 1) + ". " + ach + "\n";
+                });
+            } else {
+                message += "No achievements yet. Complete tests and earn points to unlock achievements!";
+            }
+            
+            message += "\nTotal Points: " + state.points;
+            alert(message);
+        }
+
+        function updatePointsDisplay() {
+            if (pointsValue) {
+                pointsValue.textContent = state.points;
+            }
+        }
+
+        // Initialize company interests with event listeners
+        function initializeCompanyInterests() {
+            const companyInterests = document.querySelectorAll('.company-interest');
+            
+            companyInterests.forEach(function(element) {
+                const companyId = element.getAttribute('data-company');
+                
+                // Set initial selection state
+                if (state.companyInterests.includes(companyId)) {
+                    element.classList.add('selected');
+                }
+                
+                // Add click event listener
+                element.addEventListener('click', function() {
+                    // Toggle selection
+                    this.classList.toggle('selected');
+                    
+                    // Update state
+                    const index = state.companyInterests.indexOf(companyId);
+                    if (index >= 0) {
+                        state.companyInterests.splice(index, 1);
+                    } else {
+                        state.companyInterests.push(companyId);
+                    }
+                    
+                    // Update localStorage
+                    const userData = JSON.parse(localStorage.getItem('skillbridge_user'));
+                    if (userData) {
+                        userData.companyInterests = state.companyInterests;
+                        localStorage.setItem('skillbridge_user', JSON.stringify(userData));
+                    }
+                    
+                    // Add points for selecting company
+                    addPoints(2, "Selected Company");
+                });
+            });
+        }
+
+        // Initialize application
+        function initApp() {
+            // Check if user is already logged in
+            const savedUser = localStorage.getItem('skillbridge_user');
+            if (savedUser) {
+                const userData = JSON.parse(savedUser);
+                state.currentUser = userData.username;
+                state.userSkills = userData.skills || [];
+                state.companyInterests = userData.companyInterests || [];
+                state.points = userData.points || 0;
+                state.achievements = userData.achievements || [];
+                showMainContent();
+                renderProfilePage();
+            }
+            
+            // Load leaderboard
+            loadLeaderboard();
+            
+            // Update points display
+            updatePointsDisplay();
+            
+            // Initialize suggested skills
+            renderSuggestedSkills();
+            
+            }
